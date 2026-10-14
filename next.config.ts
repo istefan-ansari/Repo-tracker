@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
     agentFeedback: true,
   },
@@ -14,6 +13,24 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  /**
+   * Allow Next.js Image component to load avatars from GitHub's CDN.
+   * Without this, next/image will refuse to optimise external URLs.
+   */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
