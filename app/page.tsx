@@ -13,7 +13,6 @@
 
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import type { PageProps } from "next";
 import type { Repository, SortOption } from "@/lib/types";
 import SearchBar from "@/components/SearchBar";
 import RepoCard from "@/components/RepoCard";
@@ -33,6 +32,14 @@ interface SearchData {
   items: Repository[];
   error?: string;
   isRateLimit?: boolean;
+}
+
+interface HomePageProps {
+  searchParams?: Promise<{
+    q?: string;
+    sort?: string;
+    page?: string;
+  }>;
 }
 
 // ─── Data helpers ─────────────────────────────────────────────────────────────
@@ -251,7 +258,7 @@ function ResultsSkeleton() {
 
 // ─── Page component ───────────────────────────────────────────────────────────
 
-export default async function HomePage(props: PageProps<"/">) {
+export default async function HomePage(props: HomePageProps) {
   const searchParams = await props.searchParams;
 
   const q = (searchParams?.q as string | undefined) ?? "";

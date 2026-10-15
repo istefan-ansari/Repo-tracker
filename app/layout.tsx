@@ -4,6 +4,7 @@
  */
 
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -52,7 +53,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ToastProvider />
 
         {/* Persistent top navigation */}
-        <Navbar />
+        <Suspense>
+          <Navbar />
+        </Suspense>
 
         {/* Page content */}
         <main className="flex-1">{children}</main>

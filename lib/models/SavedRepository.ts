@@ -58,7 +58,7 @@ const savedRepositorySchema = new Schema<ISavedRepositoryDocument>(
     toJSON: {
       virtuals: true,
       transform: (_doc, ret) => {
-        delete ret.__v;
+        delete (ret as { __v?: unknown }).__v;
         return ret;
       },
     },
