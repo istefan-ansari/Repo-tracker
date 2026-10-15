@@ -77,6 +77,7 @@ export class GitHubApiError extends Error {
 // ─── Client ──────────────────────────────────────────────────────────────────
 
 const GITHUB_API_BASE = process.env.GITHUB_API_BASE_URL ?? "https://api.github.com";
+console.log("GitHub API Base URL:", GITHUB_API_BASE);
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 /**
