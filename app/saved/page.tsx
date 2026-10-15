@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 // ─── Data fetching — lives inside Suspense boundary ──────────────────────────
 
 async function SavedRepoData() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.BASE_URL ?? "http://localhost:3000";
 
   let repositories: SavedRepo[] = [];
   let error: string | undefined;

@@ -50,7 +50,7 @@ async function fetchSearchResults(
   page: number
 ): Promise<SearchData> {
   const params = new URLSearchParams({ q, sort, page: String(page), perPage: "9" });
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.BASE_URL ?? "http://localhost:3000";
 
   try {
     const res = await fetch(`${baseUrl}/api/search?${params}`, {
@@ -76,7 +76,7 @@ async function fetchSearchResults(
 }
 
 async function fetchSavedIds(): Promise<Set<number>> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.BASE_URL ?? "http://localhost:3000";
   try {
     const res = await fetch(`${baseUrl}/api/saved`, { cache: "no-store" });
     if (!res.ok) return new Set();

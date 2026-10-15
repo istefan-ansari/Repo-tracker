@@ -29,7 +29,7 @@ interface PageData {
 // ─── Data fetching ────────────────────────────────────────────────────────────
 
 async function fetchPageData(owner: string, repo: string): Promise<PageData> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.BASE_URL ?? "http://localhost:3000";
 
   const detailRes = await fetch(`${baseUrl}/api/repos/${owner}/${repo}`, {
     cache: "no-store",
